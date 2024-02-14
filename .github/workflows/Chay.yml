@@ -5,6 +5,7 @@ on:
 jobs:
   build:
     name: 'Xem quá trình...'
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,14 +25,12 @@ jobs:
       - name: Overlay
         uses: softprops/action-gh-release@v1
         with:
-          name: Overlay
           tag_name: Overlay_V1.${{ env.PB }}
           files: OV/*
           prerelease: true
       - name: Flash Overlay
         uses: softprops/action-gh-release@v1
         with:
-          name: VH_XIAOMI_TWRP
           tag_name: VH_XIAOMI_TWRP_V1.${{ env.PB }}
           files: UP/*
           prerelease: true
