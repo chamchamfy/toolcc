@@ -21,17 +21,17 @@ jobs:
           name: overlay.zip
           path: signed/*
           retention-days: 3
-      - name: 'Overlay'
+      - name: Overlay
         uses: softprops/action-gh-release@v1
         with:
-          name: Overlay_V1.${{ env.PB }}
+          name: Overlay
           tag_name: Overlay_V1.${{ env.PB }}
           files: OV/*
           prerelease: true
-      - name: 'Flash Overlay'
+      - name: Flash Overlay
         uses: softprops/action-gh-release@v1
         with:
-          name: VH_XIAOMI_TWRP_V1.${{ env.PB }}
+          name: VH_XIAOMI_TWRP
           tag_name: VH_XIAOMI_TWRP_V1.${{ env.PB }}
           files: UP/*
           prerelease: true
