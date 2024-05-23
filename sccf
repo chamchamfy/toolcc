@@ -12,9 +12,9 @@ apktoolcc=$ur/cc/apktoolcc
 toolcc=$PREFIX/toolcc
 opcc=$ur/cc/opcc
 libtoolcc=$ur/cc/libtoolcc
-for t in $ur $bins $bina $binx64 $libcc $apktoolcc $binc $opcc $libtoolcc; do $root mkdir -p $t 2>/dev/null; done 
+for t in $ur $bins $bina $libcc $apktoolcc $binc $opcc $libtoolcc; do $root mkdir -p $t 2>/dev/null; done 
 if [ "$(uname -o)" = "GNU/Linux" ]; then 
-$root chmod -R 777 $HOME/*
+sudo chmod -R 777 $HOME
 dulieu=$HOME
 ur=$dulieu/.ur
 echo " + Đang cập nhật..."; 
@@ -35,6 +35,8 @@ $root cp -af $binx64/* $binc 2>/dev/null
 $root chmod +x $binc/* 2>/dev/null 
 echo " + Xong."; 
 else
+echo -n " + Xoá dữ liệu cũ (c/k): "; read k; 
+if [ "$k" = "c" ]; then echo " + Đang xoá..."; rm -f $libcc/* 2>/dev/null && echo " + Xong!"; else echo " + Bỏ qua !"; fi 
 echo -n " + Tải dữ liệu mới (c/k): "; read k; 
 if [ "$k" = "c" ]; then echo " + Đang cập nhật..."; 
 [ ! -f $libcc/bin.so ] && curl -L# https://raw.githubusercontent.com/chamchamfy/toolcc/main/bin.so -o $libcc/bin.so 2>/dev/null 
@@ -46,6 +48,7 @@ if [ "$k" = "c" ]; then echo " + Đang cập nhật...";
 [ -f $libcc/opcc.so ] && tar -xJf $libcc/opcc.so -C $opcc 2>/dev/null 
 [ ! -f $libcc/b.zip ] && curl -L# https://raw.githubusercontent.com/chamchamfy/toolcc/main/b.zip -o $libcc/b.zip 2>/dev/null 
 [ -f $libcc/b.zip ] && unzip -qo $libcc/b.zip -d $ur 2>/dev/null 
+else echo " + Bỏ qua !"
 fi 
 
 cp -af $bins/* $bina 2>/dev/null 
