@@ -26,7 +26,7 @@ echo " + Đang cập nhật...";
 [ -f $libcc/opcc.so ] && $root tar -xJf $libcc/opcc.so -C $opcc 2>/dev/null 
 [ ! -f $libcc/b.zip ] && $root curl -L# https://raw.githubusercontent.com/chamchamfy/toolcc/main/b.zip -o $libcc/b.zip 2>/dev/null 
 [ -f $libcc/b.zip ] && $root unzip -qo $libcc/b.zip -d $ur 2>/dev/null 
-$root curl -L# https://raw.githubusercontent.com/chamchamfy/toolcc/main/apktool_2.7.0.jar -o $apktoolcc/lib/apktoolc.jar 2>/dev/null 
+$root curl -L# https://raw.githubusercontent.com/chamchamfy/toolcc/main/apktool_2.9.3.jar -o $apktoolcc/lib/apktoolc.jar 2>/dev/null 
 $root cp -af $binx64/* /usr/bin 2>/dev/null
 $root chmod +x /usr/bin/* 2>/dev/null
 $root cp -af $apktoolcc/* $toolcc 2>/dev/null
