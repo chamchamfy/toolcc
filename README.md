@@ -4,7 +4,7 @@
 ### Cài đặt
 1. Cài termux, cấp quyền truy cập bộ nhớ: termux-setup-storage 
 
- Sau đó chạy termux cài đặt các gói: 
+- Sau đó chạy termux cài đặt các gói: 
 
 pkg update -y && pkg upgrade -y && pkg install which brotli curl zip unzip zstd pzstd binutils android-tools proot proot-distro e2fsprogs python3 openjdk-17 p7zip -y && pkg update -y && pkg upgrade -y 
  
