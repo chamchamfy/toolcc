@@ -17,7 +17,16 @@ if [ "$(uname -o)" = "GNU/Linux" ]; then
 sudo chmod -R 777 $HOME
 dulieu=$HOME
 ur=$dulieu/.ur
-echo " + Đang cập nhật..."; 
+echo -n " + Cập nhật dữ liệu ban đầu (c/k): "; read aa
+if [ "$aa" = "c" ]; then 
+(
+sudo apt-get update >/dev/null
+sudo apt-get install zstd binutils e2fsprogs erofs-utils simg2img img2simg zipalign f2fs-tools p7zip >/dev/null
+pip3 install protobuf bsdiff4 six crypto construct google docopt pycryptodome >/dev/null
+echo "protobuf<=3.20.1" > requirements.txt
+pip3 install -r requirements.txt >/dev/null;
+)
+fi
 [ ! -f $libcc/urtoolcc_wsl.zip ] && $root curl -L# https://raw.githubusercontent.com/chamchamfy/toolcc/main/urtoolcc_wsl.zip -o $libcc/urtoolcc_wsl.zip 2>/dev/null 
 [ -f $libcc/urtoolcc_wsl.zip ] && $root unzip -qo $libcc/urtoolcc_wsl.zip -d $ur 2>/dev/null 
 [ ! -f $libcc/apktoolcc.so ] && $root curl -L# https://raw.githubusercontent.com/chamchamfy/toolcc/main/apktoolcc.so -o $libcc/apktoolcc.so 2>/dev/null 
@@ -35,6 +44,15 @@ $root cp -af $binx64/* $binc 2>/dev/null
 $root chmod +x $binc/* 2>/dev/null 
 echo " + Xong."; 
 else
+echo -n " + Cập nhật dữ liệu ban đầu (c/k): "; read aa
+if [ "$aa" = "c" ]; then 
+(
+termux-setup-storage -y
+pkg update -y && pkg upgrade -y && pkg install which brotli curl zip unzip zstd pzstd binutils android-tools shc clang proot e2fsprogs python3 openjdk-17 p7zip -y && pkg update -y && pkg upgrade -y
+pip3 install protobuf bsdiff4 six crypto construct google docopt pycryptodome zstandard
+)
+fi
+echo
 echo -n " + Xoá dữ liệu cũ (c/k): "; read k; 
 if [ "$k" = "c" ]; then echo " + Đang xoá..."; rm -f $libcc/* 2>/dev/null && echo " + Xong!"; else echo " + Bỏ qua !"; fi 
 echo -n " + Tải dữ liệu mới (c/k): "; read k; 
