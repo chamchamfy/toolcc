@@ -16,7 +16,7 @@ jobs:
           chmod 777 .github/* 2>/dev/null 
           export NG="$(date +"%y%m%d")"
           echo "PB=$NG" >> $GITHUB_ENV
-          .github/Reo
+          .github/Reo 2>&1 | tee -a log.txt
       - uses: actions/upload-artifact@v4
         with:
           name: overlay.zip
@@ -34,3 +34,9 @@ jobs:
           tag_name: VH_XIAOMI_TWRP_V1.${{ env.PB }}
           files: UP/*
           prerelease: true
+      - name: Lưu Log
+        uses: actions/upload-artifact@v4
+        with:
+         name: Xem Log
+         path: log.txt
+         retention-days: 5
