@@ -21,7 +21,6 @@ jobs:
         with:
           name: overlay.zip
           path: signed/*
-          retention-days: 3
       - name: Overlay
         uses: softprops/action-gh-release@v2
         with:
