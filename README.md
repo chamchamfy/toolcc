@@ -17,9 +17,11 @@
 4. Sau đó nhập c để cập nhật dữ liệu.
 
 5. Nhập tên tương ứng để chạy!
- ! Công cụ này chạy trên termux và không cần quyền root!
-Vd: cct
-
+   
+   VD: cct
+   
+ !Công cụ này chạy trên termux và không cần quyền root!
+   
 (Lưu ý: Cần chạy 'cct' lần đầu. Sau đó gửi tập tin '/sdcard/toolcc.txt' và số điện thoại đến tác giả @chamchamfy để đăng ký sử dụng công cụ. Mật khẩu là số điện thoại đã đăng ký)
 
 ### Trong quá trình cài đặt gói dữ liệu ấn enter nếu không biết lựa chọn!
