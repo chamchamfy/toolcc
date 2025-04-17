@@ -21,11 +21,12 @@
 5. Nhập tên tương ứng để chạy!
    
    VD: cct
-   [https://raw.githubusercontent.com/chamchamfy/toolcc/main/sccf]
+   [![URTOOLCC](https://raw.githubusercontent.com/chamchamfy/toolcc/main/urtoolcc_linux.jpg)
    
  ° Công cụ này chạy trên termux không cần quyền root. 
- ° Nếu chạy công cụ trên terminal của 'WSL Ubuntu' thì cần root và thay '/sdcard' bằng đường dẫn chứa tập tin 'sccf'
    
 (Lưu ý: Cần chạy 'cct' lần đầu. Sau đó gửi tập tin '/sdcard/toolcc.txt' và số điện thoại đến tác giả @chamchamfy để đăng ký sử dụng công cụ. Mật khẩu là số điện thoại đã đăng ký)
+
+° Nếu chạy công cụ trên terminal của 'WSL Ubuntu' thì cần root và thay '/sdcard' bằng đường dẫn chứa tập tin 'sccf'
 
 ### Trong quá trình cài đặt gói dữ liệu ấn enter nếu không biết lựa chọn!
