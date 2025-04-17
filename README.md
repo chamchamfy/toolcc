@@ -9,10 +9,15 @@
 3. Cài công cụ nhập dòng lệnh thực thi tập tin sccf:
 
  bash /sdcard/sccf
-(Nhập c khi hỏi xóa các tập tin trong: /sdcard/.ur/libcc nếu có). Sau đó nhập c để cập nhật dữ liệu.
+ 
+(Nhập c khi hỏi xóa các tập tin trong: /sdcard/.ur/libcc nếu có). 
+
+4. Sau đó nhập c để cập nhật dữ liệu.
 
 5. Nhập tên tương ứng để chạy!
+ ! Công cụ này chạy trên termux và không cần quyền root!
+Vd: cct
 
-Vd: cct 
+(Lưu ý: Cần chạy 'cct' lần đầu. Sau đó gửi tập tin '/sdcard/toolcc.txt' và số điện thoại đến tác giả @chamchamfy để đăng ký sử dụng công cụ. Mật khẩu là số điện thoại đã đăng ký)
 
 ### Trong quá trình cài đặt gói dữ liệu ấn enter nếu không biết lựa chọn!
