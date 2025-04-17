@@ -21,7 +21,7 @@
 5. Nhập tên tương ứng để chạy!
    
    VD: cct
-   [![URTOOLCC](https://raw.githubusercontent.com/chamchamfy/toolcc/main/urtoolcc_linux.jpg)]
+   ![URTOOLCC](https://raw.githubusercontent.com/chamchamfy/toolcc/main/urtoolcc_linux.jpg)
    
  ° Công cụ này chạy trên termux không cần quyền root. 
    
