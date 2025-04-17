@@ -1,5 +1,5 @@
 ### Công cụ bung rom tạo bởi @chamchamfy
-### Donate:
+### Buy me coffee:
     Viettel Money: 9704229225265656
 ### Cài đặt
 1. Cài termux, cấp quyền truy cập bộ nhớ:
