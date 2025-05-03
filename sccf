@@ -21,10 +21,11 @@ echo -n " + Cập nhật dữ liệu ban đầu (c/k): "; read aa
 if [ "$aa" = "c" ]; then 
 (
 sudo apt-get update >/dev/null
-sudo apt-get install zstd binutils e2fsprogs erofs-utils simg2img img2simg zipalign f2fs-tools p7zip >/dev/null
-sudo pip3 install protobuf bsdiff4 six crypto construct google docopt pycryptodome >/dev/null
+sudo apt-get install openjdk-21-jdk-headless shc curl zip unzip zstd binutils e2fsprogs erofs-utils android-sdk-libsparse-utils zipalign python3 python3-pip util-linux bsdmainutils f2fs-tools p7zip -y >/dev/null
+sudo rm -f /usr/lib/python*/EXTERNALLY-MANAGED 2>/dev/null
+pip3 install protobuf bsdiff4 six crypto construct google docopt pycryptodome zstandard >/dev/null
 echo "protobuf<=3.20.1" > requirements.txt
-sudo pip3 install -r requirements.txt >/dev/null;
+pip3 install -r requirements.txt >/dev/null;
 )
 fi
 [ ! -f $libcc/urtoolcc_wsl.zip ] && $root curl -L# https://raw.githubusercontent.com/chamchamfy/toolcc/main/urtoolcc_wsl.zip -o $libcc/urtoolcc_wsl.zip 2>/dev/null 
