@@ -1,6 +1,9 @@
 ### Công cụ bung rom tạo bởi @chamchamfy
 ### Buy me coffee:
-    Viettel Money: 9704229225265656
+  - Viettel Money: 
+       9704229225265656
+  - Paypal: 
+	   paypal.me/chamchamfy
 ### Cài đặt
 1. Cài termux, cấp quyền truy cập bộ nhớ:
 
