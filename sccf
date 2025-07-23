@@ -28,6 +28,8 @@ echo "protobuf<=3.20.1" > requirements.txt
 pip3 install -r requirements.txt >/dev/null;
 )
 fi
+echo -n " + Xoá dữ liệu cũ (c/k): "; read k; 
+if [ "$k" = "c" ]; then echo " + Đang xoá..."; rm -f $libcc/* 2>/dev/null && echo " + Xong!"; else echo " + Bỏ qua !"; fi 
 [ ! -f $libcc/urtoolcc_wsl.zip ] && $root curl -L# https://raw.githubusercontent.com/chamchamfy/toolcc/main/urtoolcc_wsl.zip -o $libcc/urtoolcc_wsl.zip 2>/dev/null 
 [ -f $libcc/urtoolcc_wsl.zip ] && $root unzip -qo $libcc/urtoolcc_wsl.zip -d $ur 2>/dev/null 
 [ ! -f $libcc/apktoolcc.so ] && $root curl -L# https://raw.githubusercontent.com/chamchamfy/toolcc/main/apktoolcc.so -o $libcc/apktoolcc.so 2>/dev/null 
