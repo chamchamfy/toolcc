@@ -21,9 +21,9 @@ echo -n " + Cập nhật dữ liệu ban đầu (c/k): "; read aa
 if [ "$aa" = "c" ]; then 
 (
 sudo apt-get update >/dev/null
-sudo apt-get install openjdk-21-jdk-headless shc curl zip unzip zstd binutils e2fsprogs erofs-utils simg2img img2simg android-sdk-libsparse-utils zipalign python3 python3-pip util-linux f2fs-tools p7zip xz-utils -y >/dev/null
+sudo apt-get install openjdk-21-jdk-headless shc curl zip unzip zstd binutils e2fsprogs erofs-utils simg2img img2simg android-sdk-libsparse-utils zipalign python3 python3-pip util-linux f2fs-tools p7zip jq xz-utils -y >/dev/null
 sudo rm -f /usr/lib/python*/EXTERNALLY-MANAGED 2>/dev/null
-pip3 install protobuf bsdiff4 brotli six brotli crypto construct google docopt pycryptodome zstandard lz4 >/dev/null
+pip3 install protobuf bsdiff4 brotli six crypto construct google docopt pycryptodome zstandard lz4 >/dev/null
 echo "protobuf<=3.25.5" > requirements.txt
 pip3 install -r requirements.txt >/dev/null;
 )
@@ -51,8 +51,8 @@ echo -n " + Cập nhật dữ liệu ban đầu (c/k): "; read aa
 if [ "$aa" = "c" ]; then 
 (
 termux-setup-storage -y
-pkg update -y && pkg upgrade -y && pkg install which brotli curl zip unzip zstd pzstd binutils android-tools shc clang proot e2fsprogs python3 openjdk-17 p7zip -y && pkg update -y && pkg upgrade -y
-pip3 install protobuf bsdiff4 six crypto construct google docopt pycryptodome zstandard
+pkg update -y && pkg upgrade -y && pkg install which brotli curl zip unzip zstd pzstd binutils android-tools shc clang proot e2fsprogs python openjdk-17 p7zip jq ndk-multilib-native-static xz-utils -y && pkg update -y && pkg upgrade -y
+pip3 install protobuf bsdiff4 brotli six crypto construct google docopt pycryptodome zstandard lz4
 )
 fi
 echo
