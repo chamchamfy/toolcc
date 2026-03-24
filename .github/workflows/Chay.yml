@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: 'Xem thông báo'
         run: |
           # Run Build 
@@ -17,7 +17,7 @@ jobs:
           export NG="$(date +"%y%m%d")"
           echo "PB=$NG" >> $GITHUB_ENV
           .github/Reo 2>&1 | tee -a log.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: overlay.zip
           path: signed/*
@@ -34,7 +34,7 @@ jobs:
           files: UP/*
           prerelease: true
       - name: Lưu Log
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
          name: Xem Log
          path: log.txt
