@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+
       - name: 'Xem thông báo'
         run: |
           # Run Build 
@@ -17,25 +18,29 @@ jobs:
           export NG="$(date +"%y%m%d")"
           echo "PB=$NG" >> $GITHUB_ENV
           .github/Reo 2>&1 | tee -a log.txt
+
       - uses: actions/upload-artifact@v5
         with:
           name: overlay.zip
           path: signed/*
+
       - name: Overlay
         uses: ncipollo/release-action@v1
         with:
-          tag_name: Overlay_V1.${{ env.PB }}
-          files: OV/*
+          tag: Overlay_V1.${{ env.PB }}
+          artifacts: OV/*
           prerelease: true
+
       - name: Flash Overlay
         uses: ncipollo/release-action@v1
         with:
-          tag_name: VH_XIAOMI_TWRP_V1.${{ env.PB }}
-          files: UP/*
+          tag: VH_XIAOMI_TWRP_V1.${{ env.PB }}
+          artifacts: UP/*
           prerelease: true
+
       - name: Lưu Log
         uses: actions/upload-artifact@v5
         with:
-         name: Xem Log
-         path: log.txt
-         retention-days: 30
+          name: Xem Log
+          path: log.txt
+          retention-days: 30
