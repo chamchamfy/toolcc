@@ -22,13 +22,13 @@ jobs:
           name: overlay.zip
           path: signed/*
       - name: Overlay
-        uses: softprops/action-gh-release@v2
+        uses: ncipollo/release-action@v1
         with:
           tag_name: Overlay_V1.${{ env.PB }}
           files: OV/*
           prerelease: true
       - name: Flash Overlay
-        uses: softprops/action-gh-release@v2
+        uses: ncipollo/release-action@v1
         with:
           tag_name: VH_XIAOMI_TWRP_V1.${{ env.PB }}
           files: UP/*
@@ -38,4 +38,4 @@ jobs:
         with:
          name: Xem Log
          path: log.txt
-         retention-days: 3
+         retention-days: 30
