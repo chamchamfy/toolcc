@@ -13,7 +13,6 @@ jobs:
 
       - name: 'Xem thông báo'
         run: |
-          # Run Build 
           chmod 777 .github/* 2>/dev/null 
           export NG="$(date +"%y%m%d")"
           echo "PB=$NG" >> $GITHUB_ENV
@@ -25,18 +24,22 @@ jobs:
           path: signed/*
 
       - name: Overlay
-        uses: ncipollo/release-action@v1
-        with:
-          tag: Overlay_V1.${{ env.PB }}
-          artifacts: OV/*
-          prerelease: true
+        run: |
+          gh release create Overlay_V1.${{ env.PB }} OV/* \
+            --prerelease \
+            --title "Overlay V1.${{ env.PB }}" \
+            --notes "Release Overlay build ${{ env.PB }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Flash Overlay
-        uses: ncipollo/release-action@v1
-        with:
-          tag: VH_XIAOMI_TWRP_V1.${{ env.PB }}
-          artifacts: UP/*
-          prerelease: true
+        run: |
+          gh release create VH_XIAOMI_TWRP_V1.${{ env.PB }} UP/* \
+            --prerelease \
+            --title "VH_XIAOMI_TWRP V1.${{ env.PB }}" \
+            --notes "Flash Overlay build ${{ env.PB }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Lưu Log
         uses: actions/upload-artifact@v5
