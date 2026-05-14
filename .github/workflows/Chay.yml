@@ -1,57 +1,52 @@
 name: 'BUILD OVERLAY'
+
 on: 
   workflow_dispatch:
-  
+
 jobs:
   build:
-    name: 'Xem quá trình...'
+    name: 'Chuẩn bị'
     permissions: write-all
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: 'Xem thông báo'
+      - name: 'Xây dựng'
         run: |
-          chmod 777 .github/* 2>/dev/null 
-          export NG="$(date +"%y%m%d")"
+          chmod +x .github/* 2>/dev/null || true
+          NG="$(date +"%y%m%d")"
           echo "PB=$NG" >> $GITHUB_ENV
-          .github/Reo 2>&1 | tee -a log.txt
+          .github/Reo 2>&1 | tee log.txt
 
-      - uses: actions/upload-artifact@v5
+      - name: 'Tải lên'
+        uses: actions/upload-artifact@v5
         with:
           name: overlay.zip
           path: signed/*
+          if-no-files-found: warn
 
-      - name: Overlay
-        run: |
-          if gh release view Overlay_V1.${{ env.PB }} >/dev/null 2>&1; then
-            gh release upload Overlay_V1.${{ env.PB }} OV/* --clobber
-          else
-            gh release create Overlay_V1.${{ env.PB }} OV/* \
-              --prerelease \
-              --title "Overlay V1.${{ env.PB }}" \
-              --notes "Release Overlay build ${{ env.PB }}"
-          fi
+      - name: 'Overlay'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Flash Overlay
+          GH_TOKEN: ${{ github.token }}
         run: |
-          if gh release view VH_XIAOMI_TWRP_V1.${{ env.PB }} >/dev/null 2>&1; then
-            gh release upload VH_XIAOMI_TWRP_V1.${{ env.PB }} UP/* --clobber
-          else
-            gh release create VH_XIAOMI_TWRP_V1.${{ env.PB }} UP/* \
-              --prerelease \
-              --title "VH_XIAOMI_TWRP V1.${{ env.PB }}" \
-              --notes "Flash Overlay build ${{ env.PB }}"
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG="Overlay_V1.${{ env.PB }}"
+          gh release create "$TAG" --prerelease --title "Overlay V1.${{ env.PB }}" --notes "Release Overlay build ${{ env.PB }}" || true
+          gh release upload "$TAG" OV/* --clobber
 
-      - name: Lưu Log
+      - name: 'Flash Overlay'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="VH_XIAOMI_TWRP_V1.${{ env.PB }}"
+          gh release create "$TAG" --prerelease --title "VH_XIAOMI_TWRP V1.${{ env.PB }}" --notes "Flash Overlay build ${{ env.PB }}" || true
+          gh release upload "$TAG" UP/* --clobber
+
+      - name: 'Log'
+        if: always()
         uses: actions/upload-artifact@v5
         with:
-          name: Xem Log
+          name: Xem-Log-${{ env.PB }}
           path: log.txt
           retention-days: 30
