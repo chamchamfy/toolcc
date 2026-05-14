@@ -25,19 +25,27 @@ jobs:
 
       - name: Overlay
         run: |
-          gh release create Overlay_V1.${{ env.PB }} OV/* \
-            --prerelease \
-            --title "Overlay V1.${{ env.PB }}" \
-            --notes "Release Overlay build ${{ env.PB }}"
+          if gh release view Overlay_V1.${{ env.PB }} >/dev/null 2>&1; then
+            gh release upload Overlay_V1.${{ env.PB }} OV/* --clobber
+          else
+            gh release create Overlay_V1.${{ env.PB }} OV/* \
+              --prerelease \
+              --title "Overlay V1.${{ env.PB }}" \
+              --notes "Release Overlay build ${{ env.PB }}"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Flash Overlay
         run: |
-          gh release create VH_XIAOMI_TWRP_V1.${{ env.PB }} UP/* \
-            --prerelease \
-            --title "VH_XIAOMI_TWRP V1.${{ env.PB }}" \
-            --notes "Flash Overlay build ${{ env.PB }}"
+          if gh release view VH_XIAOMI_TWRP_V1.${{ env.PB }} >/dev/null 2>&1; then
+            gh release upload VH_XIAOMI_TWRP_V1.${{ env.PB }} UP/* --clobber
+          else
+            gh release create VH_XIAOMI_TWRP_V1.${{ env.PB }} UP/* \
+              --prerelease \
+              --title "VH_XIAOMI_TWRP V1.${{ env.PB }}" \
+              --notes "Flash Overlay build ${{ env.PB }}"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
