@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: 'Chuẩn bị'
+    name: 'Xem quá trình'
     permissions: write-all
     runs-on: ubuntu-latest
     
