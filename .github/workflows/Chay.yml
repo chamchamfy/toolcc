@@ -11,7 +11,7 @@ jobs:
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: 'Xây dựng'
         run: |
@@ -21,7 +21,7 @@ jobs:
           .github/Reo 2>&1 | tee log.txt
 
       - name: 'Tải lên'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: overlay.zip
           path: signed/*
@@ -45,7 +45,7 @@ jobs:
 
       - name: 'Log'
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: Xem-Log-${{ env.PB }}
           path: log.txt
