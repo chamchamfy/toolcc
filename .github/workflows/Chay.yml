@@ -39,8 +39,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TAG="VH_XIAOMI_TWRP_V1.${{ env.PB }}"
-          gh release create "$TAG" --prerelease --title "VH_XIAOMI_TWRP V1.${{ env.PB }}" --notes "Flash Overlay build ${{ env.PB }}" || true
+          TAG="VH_XIAOMI_V1.${{ env.PB }}"
+          gh release create "$TAG" --prerelease --title "VH_XIAOMI V1.${{ env.PB }}" --notes "Flash Overlay build ${{ env.PB }}" || true
           gh release upload "$TAG" UP/* --clobber
 
       - name: 'Log'
